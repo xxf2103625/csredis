@@ -7,7 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSRedis {
-	partial class CSRedisClient {
+	public partial class CSRedisClient : ICSRedisClient1
+    {
 		/// <summary>
 		/// 缓存壳
 		/// </summary>
