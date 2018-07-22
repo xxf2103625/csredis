@@ -46,7 +46,7 @@ namespace CSRedis.Internal.IO
         {
             foreach (var socket in _pool)
             {
-                System.Diagnostics.Debug.WriteLine("Disposing socket #{0}", socket.LocalEndPoint);
+                //System.Diagnostics.Debug.WriteLine("Disposing socket #{0}", socket.LocalEndPoint);
                 socket.Dispose();
             }
         }
@@ -81,7 +81,7 @@ namespace CSRedis.Internal.IO
 
         Socket SocketFactory()
         {
-            System.Diagnostics.Debug.WriteLine("NEW SOCKET");
+            //System.Diagnostics.Debug.WriteLine("NEW SOCKET");
             return new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
     }

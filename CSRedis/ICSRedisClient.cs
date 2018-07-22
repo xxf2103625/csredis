@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CSRedis
 {
-    public interface ICSRedisClient
+    public interface ICSRedisClient:IDisposable
     {
         Dictionary<string, ConnectionPool> ClusterNodes { get; }
 

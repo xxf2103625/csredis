@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSRedis {
-	public partial class CSRedisClient : ICSRedisClient1
+	public partial class CSRedisClient : ICSRedisClient
     {
 		/// <summary>
 		/// 缓存壳
@@ -656,6 +656,19 @@ namespace CSRedis {
 		/// <param name="member">成员</param>
 		/// <returns></returns>
 		async public Task<double?> ZScoreAsync(string key, string member) => await ExecuteScalarAsync(key, (c, k) => c.ZScoreAsync(k, member));
-		#endregion
-	}
+
+
+        #endregion
+
+        public void Dispose()
+        {
+            foreach(var cluster in this.ClusterNodes)
+            {
+                foreach(var item in cluster.Value.AllConnections)
+                {
+                    item.Dispose();
+                }
+            }
+        }
+    }
 }
