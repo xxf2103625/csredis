@@ -758,7 +758,11 @@ return 0", $"CSRedisPSubscribe{subscrKey}", "", trylong.ToString());
         {
             return ExecuteScalar(key, (c, k) => c.SAdd(key, memberScores));
         }
-
+        public long SCard(string key)
+        {
+            return ExecuteScalar(key, (c, k) => c.SCard(key));
+        }
+        public 
         #endregion
 
         #region Sorted Set 操作
